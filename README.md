@@ -1,4 +1,4 @@
-# Zomato Clone Backend API
+# Zomato Backend API
 
 A comprehensive food delivery backend API built with FastAPI, featuring user authentication, restaurant management, order processing, reviews, and search functionality.
 
@@ -28,52 +28,53 @@ A comprehensive food delivery backend API built with FastAPI, featuring user aut
 - PostgreSQL
 - pip or conda
 
-## 🔧 Installation & Setup
+## 🔧 Installation
 
-### 1. Clone the Repository
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Utkarsh2108/zomato-backend.git
+   cd zomato-backend
+   ```
 
-```bash
-git clone https://github.com/yourusername/zomato-clone-backend.git
-cd zomato-clone-backend
-```
+2. **Create and activate virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-### 2. Create Virtual Environment
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+4. **Environment Setup**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   # Database
+   DATABASE_URL=postgresql://username:password@localhost/databasename
+   
+   # JWT
+   SECRET_KEY=your-secret-key-here
+   ALGORITHM=HS256
+   ACCESS_TOKEN_EXPIRE_MINUTES=30
+   
+   # Application
+   DEBUG=True
+   HOST=0.0.0.0
+   PORT=8000
+   ```
 
-### 3. Install Dependencies
+5. **Database Setup**
+   ```bash
+   # Create database migrations
+   alembic upgrade head
+   ```
 
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Environment Configuration
-
-Create a `.env` file in the root directory:
-
-```env
-# Database
-DATABASE_URL=postgresql://username:password@localhost/databasename
-
-# JWT
-SECRET_KEY=your-secret-key-here
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-
-# Application
-DEBUG=True
-HOST=0.0.0.0
-PORT=8000
-```
-
-### 5. Start the Application
-
-```bash
-uvicorn main:app --reload
-```
+6. **Run the application**
+   ```bash
+   uvicorn main:app --reload
+   ```
 
 The API will be available at `http://localhost:8000`
 
@@ -81,9 +82,8 @@ The API will be available at `http://localhost:8000`
 
 Once the server is running, access the interactive API documentation:
 
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-
+- **Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ## 🔐 Authentication
 
@@ -100,7 +100,7 @@ The API uses JWT-based authentication. To access protected endpoints:
 - **Customer** (default): Can browse restaurants, place orders, add reviews, manage favorites
 - **Admin**: Full access including restaurant and menu management
 
-## 📖 API Endpoints
+## 🛣️ API Endpoints
 
 ### Authentication
 - `POST /auth/register` - User registration
@@ -134,7 +134,37 @@ The API uses JWT-based authentication. To access protected endpoints:
 - `POST /favorites/{restaurant_id}/` - Toggle favorite
 - `GET /favorites/` - List favorite restaurants
 
-### Search & Filters
+### Search
 - `GET /search/?query=burger` - Search restaurants/dishes
-- Filter parameters: `cuisine`, `rating`, `is_open`, `is_active`
+- **Filter parameters**: `cuisine`, `rating`, `is_open`, `is_active`
 
+### Production Environment Variables
+```env
+DATABASE_URL=postgresql://user:password@host:port/database
+SECRET_KEY=your-production-secret-key
+DEBUG=False
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Utkarsh**
+- GitHub: [@Utkarsh2108](https://github.com/Utkarsh2108)
+
+## 🙏 Acknowledgments
+
+- FastAPI for the excellent web framework
+- SQLAlchemy for the robust ORM
+- PostgreSQL for the reliable database
+- All contributors who helped improve this project
